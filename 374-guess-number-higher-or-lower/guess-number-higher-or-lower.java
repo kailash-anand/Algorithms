@@ -1,0 +1,40 @@
+/** 
+ * Forward declaration of guess API.
+ * @param  num   your guess
+ * @return 	     -1 if num is higher than the picked number
+ *			      1 if num is lower than the picked number
+ *               otherwise return 0
+ * int guess(int num);
+ */
+
+public class Solution extends GuessGame {
+    public int guessNumber(int n) {
+        int guess = 0;
+        int low = 1;
+        int high = n;
+        int result = 0;
+
+        while(low <= high)
+        {
+            guess = low + (high - low)/2;
+            result = guess(guess);
+
+            if(result == 0)
+            {
+                break;
+            }
+            
+            if(result == -1)
+            {
+                high = guess;
+            }
+
+            if(result == 1)
+            {
+                low = guess + 1;
+            }
+        }
+
+        return guess;
+    }
+}
