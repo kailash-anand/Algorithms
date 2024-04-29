@@ -19,7 +19,7 @@ class Solution {
         ListNode firstHalfHead = firstHalf;
 
 
-        if(head == null)
+        if(head == null || head.next == null)
         {
             return head;
         }
