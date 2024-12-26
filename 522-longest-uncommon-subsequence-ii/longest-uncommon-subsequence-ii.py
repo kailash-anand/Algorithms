@@ -4,7 +4,6 @@ class Solution:
         
         rejected = []
         selected = []
-        print(strs)
 
         for i in range(len(strs)):
             if i == 0:
@@ -22,10 +21,6 @@ class Solution:
                         selected.remove(strs[i])
                         break
                 rejected.append(strs[i])
-                
-                
-        print(rejected)
-        print(selected)
 
         if selected == []:
             return -1
