@@ -1,8 +1,14 @@
 class Solution:
     def majorityElement(self, nums: List[int]) -> int:
-        table = Counter(nums)
-        vals = max(table.values())
-        
-        for x,y in table.items():
-            if y == vals:
-                return x
+        count = 0
+        max = nums[0]
+        for i in range(len(nums)):
+            if count == 0:
+                max = nums[i]
+                count = 1
+            elif max == nums[i]:
+                count += 1
+            else:
+                count -= 1
+
+        return max
