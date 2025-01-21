@@ -31,7 +31,6 @@ class Solution:
         list[num2] = temp
 
     def sortSelective(self, toSort, toAdd):
-        print(toSort)
         toSort.sort()
 
         start = len(toAdd) - len(toSort)
