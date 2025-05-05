@@ -29,7 +29,7 @@ class Solution
                 formed++;
             }
 
-            while (l <= r && formed == required) 
+            while (formed == required) 
             {
                 c = s.charAt(l);
 
