@@ -5,21 +5,19 @@
 #         self.left = left
 #         self.right = right
 class Solution:
-    nodes = list()
-
     def getMinimumDifference(self, root: Optional[TreeNode]) -> int:
-        self.collectNodes(root)
-        min_diff = self.nodes[1] - self.nodes[0]
+        self.prev = None
+        self.min_diff = float('inf')
+        self.inorder(root)
 
-        for i in range(len(self.nodes) - 1):
-            if (self.nodes[i + 1] - self.nodes[i]) < min_diff:
-                min_diff =  self.nodes[i + 1] - self.nodes[i]
+        return self.min_diff
 
-        self.nodes.clear()
-        return min_diff
-
-    def collectNodes(self, root: Optional[TreeNode]) -> None:
+    def inorder(self, root: Optional[TreeNode]) -> None:
         if root != None:
-            self.collectNodes(root.left)
-            self.nodes.append(root.val)
-            self.collectNodes(root.right)
+            self.inorder(root.left)
+
+            if self.prev is not None:
+                self.min_diff = min(self.min_diff, root.val - self.prev) 
+            self.prev = root.val
+            
+            self.inorder(root.right)
