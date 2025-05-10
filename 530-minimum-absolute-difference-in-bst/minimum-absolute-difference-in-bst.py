@@ -9,7 +9,6 @@ class Solution:
 
     def getMinimumDifference(self, root: Optional[TreeNode]) -> int:
         self.collectNodes(root)
-        self.nodes.sort()
         min_diff = self.nodes[1] - self.nodes[0]
 
         for i in range(len(self.nodes) - 1):
@@ -21,7 +20,6 @@ class Solution:
 
     def collectNodes(self, root: Optional[TreeNode]) -> None:
         if root != None:
-            self.nodes.append(root.val)
-
             self.collectNodes(root.left)
+            self.nodes.append(root.val)
             self.collectNodes(root.right)
