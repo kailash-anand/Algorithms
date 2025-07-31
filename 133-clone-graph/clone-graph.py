@@ -8,7 +8,9 @@ class Node:
 
 from typing import Optional
 class Solution:
-    old = {}
+
+    def __init__(self):
+        self.old = {}
 
     def cloneGraph(self, node: Optional['Node']) -> Optional['Node']:
         if node is None:
@@ -19,10 +21,6 @@ class Solution:
 
         newNode = Node(node.val)
         self.old[node] = newNode
-
-        if node.neighbors is None or node.neighbors == []:
-            newNode.neighbors = []
-            return newNode
        
         for neighbor in node.neighbors:
             newNeighbor = self.cloneGraph(neighbor)
