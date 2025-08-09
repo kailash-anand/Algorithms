@@ -14,11 +14,15 @@ class Solution:
         if len(lists) == 1:
             return lists[0]
 
-        mergedList = self.mergeTwoLists(lists[0], lists[1])
-        for i in range(2, len(lists)):
-            mergedList = self.mergeTwoLists(mergedList, lists[i]) 
+        while len(lists) > 1:
+            curr_round = []
+            for i in range(0, len(lists), 2):
+                list1 = lists[i]
+                list2 = lists[i + 1] if i + 1 < len(lists) else None
+                curr_round.append(self.mergeTwoLists(list1, list2))
+            lists = curr_round
 
-        return mergedList
+        return lists[0]
 
     def mergeTwoLists(self, list1: Optional[ListNode], list2: Optional[ListNode]) -> Optional[ListNode]:
             dummy = ListNode(-1)
