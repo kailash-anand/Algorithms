@@ -7,9 +7,6 @@ class Solution:
     def mergeKLists(self, lists: List[Optional[ListNode]]) -> Optional[ListNode]:
         if not lists:
             return None
-        
-        if len(lists) == 0:
-            return []
 
         if len(lists) == 1:
             return lists[0]
