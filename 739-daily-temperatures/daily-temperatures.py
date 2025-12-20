@@ -10,7 +10,4 @@ class Solution:
 
             stack.append(i)
 
-        while bool(stack):
-            answer[stack.pop()] = 0
-
         return answer
