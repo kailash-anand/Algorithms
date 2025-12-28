@@ -5,17 +5,14 @@
 #         self.left = left
 #         self.right = right
 class Solution:
-    def helper(self, root, minimum, maximum):
-        if root is None:
-            return True
-
-        if root.val <= minimum or root.val >= maximum:
-            return False
-
-        return self.helper(root.left, minimum, root.val) and self.helper(root.right, root.val, maximum)
-
     def isValidBST(self, root: Optional[TreeNode]) -> bool:
-        if root is None:
-            return True
+        def helper(root, minimum, maximum):
+            if root is None:
+                return True
+
+            if root.val <= minimum or root.val >= maximum:
+                return False
+
+            return helper(root.left, minimum, root.val) and helper(root.right, root.val, maximum)
             
-        return self.helper(root, float('-inf'), float('inf'))
+        return helper(root, float('-inf'), float('inf'))
