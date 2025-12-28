@@ -14,7 +14,7 @@ class Solution:
             if self.pIndex < len(preorder):
                 findIndex = inorder_map[preorder[self.pIndex]]
                  
-                if findIndex >= left and findIndex <= right:
+                if findIndex >= left and findIndex < right:
                     node = TreeNode(preorder[self.pIndex])
                     self.pIndex += 1
                     node.left = helper(left, findIndex)
