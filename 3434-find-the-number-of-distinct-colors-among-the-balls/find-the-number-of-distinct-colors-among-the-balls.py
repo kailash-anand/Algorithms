@@ -1,22 +1,20 @@
 class Solution:
     def queryResults(self, limit: int, queries: List[List[int]]) -> List[int]:
-        from collections import defaultdict
-
-        color_to_balls = defaultdict(set)
-        ball_to_color = defaultdict(int)
+        color_counts = {}
+        ball_to_color = {}
         result = []
 
         for ball, color in queries:
             if ball in ball_to_color: 
                 prev_color = ball_to_color[ball]
-                color_to_balls[prev_color].remove(ball)
+                color_counts[prev_color] -= 1
 
-                if not color_to_balls[prev_color]:
-                    del color_to_balls[prev_color]
+                if color_counts[prev_color] == 0:
+                    del color_counts[prev_color]
 
             ball_to_color[ball] = color
-            color_to_balls[color].add(ball)
+            color_counts[color] = color_counts.get(color, 0) + 1
 
-            result.append(len(color_to_balls.keys()))
+            result.append(len(color_counts))
 
         return result
